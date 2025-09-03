@@ -38,143 +38,161 @@
     <!-- Visualization & Content Choices: Report Info (Weekly Tasks) -> Goal (Organize/Track) -> Viz (Interactive Checklist & Cards) -> Interaction (Clicking checkboxes updates state) -> Justification (Provides clear status and engagement). Report Info (Task Types) -> Goal (Inform/Compare) -> Viz (Donut Chart) -> Interaction (Static, updates with checklist) -> Justification (Gives a quick visual summary of work distribution) -> Library/Method (Chart.js/Canvas). -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300">
 
-    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
+<div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
 
-        <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Feedback-Based Motor Control Project</h1>
-            <p class="text-slate-600 mt-2">An Interactive 4-Week Project Plan</p>
-            <div class="mt-4 text-sm text-slate-500">
-                <p><span class="font-semibold">Team:</span> The Codefathers (Parth, Sahaj, Kavish, Dhyey)</p>
-                <p><span class="font-semibold">Mentors:</span> Harikumar Kandath (Faculty), Chetanya (TA)</p>
+    <header class="text-center mb-8 relative">
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Feedback-Based Motor Control Project</h1>
+        <p class="text-slate-600 mt-2">An Interactive 4-Week Project Plan</p>
+        <div class="mt-4 text-sm text-slate-500">
+            <p><span class="font-semibold">Team:</span> The Codefathers (Parth, Sahaj, Kavish, Dhyey)</p>
+            <p><span class="font-semibold">Mentors:</span> Harikumar Kandath (Faculty), Chetanya (TA)</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="dashboard" class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm transition-colors duration-300">
+                <h2 class="text-xl font-semibold mb-4">Project Progress</h2>
+                <div class="w-full bg-slate-200 rounded-full h-4">
+                    <div id="progressBar" class="bg-amber-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <p id="progressText" class="text-center text-sm mt-2 text-slate-600">0% Complete</p>
             </div>
-        </header>
-
-        <main>
-            <div id="dashboard" class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-                    <h2 class="text-xl font-semibold mb-4">Project Progress</h2>
-                    <div class="w-full bg-slate-200 rounded-full h-4">
-                        <div id="progressBar" class="bg-amber-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
-                    </div>
-                    <p id="progressText" class="text-center text-sm mt-2 text-slate-600">0% Complete</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-center items-center">
-                     <h2 class="text-xl font-semibold mb-2 text-center">Task Distribution</h2>
-                     <div class="chart-container">
-                        <canvas id="taskChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm">
-                <div class="flex flex-wrap justify-center border-b border-slate-200 mb-6">
-                    <button data-week="1" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-700 bg-slate-100 border-b-4 border-amber-500">Week 1</button>
-                    <button data-week="2" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 2</button>
-                    <button data-week="3" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 3</button>
-                    <button data-week="4" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 4</button>
-                </div>
-
-                <div id="plan-content">
+            <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-center items-center transition-colors duration-300">
+                <h2 class="text-xl font-semibold mb-2 text-center">Task Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="taskChart"></canvas>
                 </div>
             </div>
-        </main>
+        </div>
 
-    </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm transition-colors duration-300">
+            <div class="flex flex-wrap justify-center border-b border-slate-200 mb-4 transition-colors duration-300">
+                <button data-week="1" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-700 bg-slate-100 border-b-4 border-amber-500 transition-colors duration-300">Week 1</button>
+                <button data-week="2" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 2</button>
+                <button data-week="3" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 3</button>
+                <button data-week="4" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 4</button>
+                <button data-week="5" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-slate-500 bg-transparent border-b-4 border-transparent">Week 5</button>
+            </div>
+            <div class="flex flex-wrap justify-center mb-6">
+                <button id="addWeekBtn" class="px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-white bg-green-500 hover:bg-green-600 transition-colors duration-300">Add Week</button>
+                <button id="removeWeekBtn" class="px-4 py-2 mx-2 mb-2 rounded-md font-semibold text-white bg-red-500 hover:bg-red-600 transition-colors duration-300">Remove Week</button>
+            </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let currentWeek = 1;
+            <div id="plan-content">
+            </div>
+        </div>
+    </main>
 
-            const projectData = {
-                totalTasks: 0,
-                tasks: {
-                    1: {
-                        lab: [
-                            { text: "Team kick-off and component check", done: false },
-                            { text: "Set up IDE and development environment", done: false },
-                            { text: "Assemble motor with driver and test basic functions", done: false }
-                        ],
-                        prep: [
-                            { text: "Research how incremental encoders provide speed/position data", done: false },
-                            { text: "Write initial script to read raw encoder values and calculate RPM", done: false },
-                            { text: "Document progress from Monday's lab session", done: false }
-                        ]
-                    },
-                    2: {
-                        lab: [
-                            { text: "Attach encoder to motor shaft", done: false },
-                            { text: "Test and debug the script for reading RPM and position", done: false },
-                        ],
-                        prep: [
-                            { text: "Design feedback loop flowcharts for speed and position control", done: false },
-                            { text: "Write the complete PID controller code structure", done: false },
-                            { text: "Research various PID tuning strategies", done: false }
-                        ]
-                    },
-                    3: {
-                        lab: [
-                            { text: "Implement and tune the PID controller for speed", done: false },
-                            { text: "Assemble complete physical setup with brackets/couplings", done: false },
-                            { text: "Integrate and test power management system", done: false }
-                        ],
-                        prep: [
-                            { text: "Write the specific code for the position control PID controller", done: false },
-                            { text: "Develop UI to handle speed/position setpoints and mode switching", done: false },
-                        ]
-                    },
-                    4: {
-                        lab: [
-                            { text: "Implement and tune the position controller", done: false },
-                            { text: "Test the user interface for both control models", done: false },
-                            { text: "Log all final performance data for analysis", done: false },
-                            { text: "Conduct a full practice demonstration of the project", done: false }
-                        ],
-                        prep: [
-                            { text: "Analyze collected data for both speed and position models", done: false },
-                            { text: "Write the final project report", done: false },
-                            { text: "Create the final presentation slides", done: false },
-                            { text: "Clean up, comment, and finalize all code for submission", done: false }
-                        ]
-                    }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentWeek = 1;
+
+        const projectData = {
+            totalTasks: 0,
+            tasks: {
+                1: {
+                    lab: [
+                        { text: "Team kick-off and component check", done: false },
+                        { text: "Set up IDE and development environment", done: false },
+                        { text: "Assemble motor with driver and test basic functions", done: false }
+                    ],
+                    prep: [
+                        { text: "Research how incremental encoders provide speed/position data", done: false },
+                        { text: "Write initial script to read raw encoder values and calculate RPM", done: false },
+                        { text: "Document progress from Monday's lab session", done: false }
+                    ]
+                },
+                2: {
+                    lab: [
+                        { text: "Attach encoder to motor shaft", done: false },
+                        { text: "Test and debug the script for reading RPM and position", done: false },
+                    ],
+                    prep: [
+                        { text: "Design feedback loop flowcharts for speed and position control", done: false },
+                        { text: "Write the complete PID controller code structure", done: false },
+                        { text: "Research various PID tuning strategies", done: false }
+                    ]
+                },
+                3: {
+                    lab: [
+                        { text: "Implement and tune the PID controller for speed", done: false },
+                        { text: "Assemble complete physical setup with brackets/couplings", done: false },
+                        { text: "Integrate and test power management system", done: false }
+                    ],
+                    prep: [
+                        { text: "Write the specific code for the position control PID controller", done: false },
+                        { text: "Develop UI to handle speed/position setpoints and mode switching", done: false },
+                    ]
+                },
+                4: {
+                    lab: [
+                        { text: "Implement and tune the position controller", done: false },
+                        { text: "Test the user interface for both control models", done: false },
+                        { text: "Log all final performance data for analysis", done: false },
+                        { text: "Conduct a full practice demonstration of the project", done: false }
+                    ],
+                    prep: [
+                        { text: "Analyze collected data for both speed and position models", done: false },
+                        { text: "Write the final project report", done: false },
+                        { text: "Create the final presentation slides", done: false },
+                        { text: "Clean up, comment, and finalize all code for submission", done: false }
+                    ]
+                },
+                5: {
+                    lab: [
+                        { text: "Prepare and test the final project demonstration", done: false },
+                        { text: "Conduct a final review of the code and documentation", done: false }
+                    ],
+                    prep: [
+                        { text: "Complete the final project report and analysis", done: false },
+                        { text: "Finalize presentation slides and rehearse the talk", done: false },
+                        { text: "Clean up the lab and return borrowed components", done: false }
+                    ]
                 }
-            };
+            }
+        };
 
-            let taskChart;
+        let taskChart;
 
-            const planContent = document.getElementById('plan-content');
-            const weekButtons = document.querySelectorAll('.week-btn');
-            const progressBar = document.getElementById('progressBar');
-            const progressText = document.getElementById('progressText');
+        const planContent = document.getElementById('plan-content');
+        const addWeekBtn = document.getElementById('addWeekBtn');
+        const removeWeekBtn = document.getElementById('removeWeekBtn');
 
-            const recalculateTotalTasks = () => {
-                projectData.totalTasks = Object.values(projectData.tasks).reduce((acc, week) => acc + week.lab.length + week.prep.length, 0);
-            };
+        const recalculateTotalTasks = () => {
+            projectData.totalTasks = Object.values(projectData.tasks).reduce((acc, week) => acc + week.lab.length + week.prep.length, 0);
+        };
 
-            const createTaskHtml = (task, week, type, index) => {
-                const taskId = `task-${week}-${type}-${index}`;
-                return `
-                    <li class="mb-3">
+        const createTaskHtml = (task, week, type, index) => {
+            const taskId = `task-${week}-${type}-${index}`;
+            return `
+                    <li class="mb-3 flex items-center justify-between">
                         <input type="checkbox" id="${taskId}" class="task-checkbox hidden" ${task.done ? 'checked' : ''} data-week="${week}" data-type="${type}" data-index="${index}">
                         <label for="${taskId}" class="flex items-center cursor-pointer">
-                            <span class="w-5 h-5 border-2 border-slate-300 rounded-md mr-3 flex-shrink-0 transition-colors"></span>
+                            <span class="w-5 h-5 border-2 border-slate-300 rounded-md mr-3 flex-shrink-0 transition-colors duration-300"></span>
                             <span class="text-slate-700">${task.text}</span>
                         </label>
+                        <button class="delete-task-btn text-red-500 hover:text-red-700" data-week="${week}" data-type="${type}" data-index="${index}">
+                            &times;
+                        </button>
                     </li>
                 `;
-            };
+        };
 
-            const renderWeek = (weekNumber) => {
-                currentWeek = weekNumber;
-                const weekData = projectData.tasks[weekNumber];
-                const labTasksHtml = weekData.lab.map((task, index) => createTaskHtml(task, weekNumber, 'lab', index)).join('');
-                const prepTasksHtml = weekData.prep.map((task, index) => createTaskHtml(task, weekNumber, 'prep', index)).join('');
+        const renderWeek = (weekNumber) => {
+            currentWeek = weekNumber;
+            const weekData = projectData.tasks[weekNumber];
+            const labTasksHtml = weekData.lab.map((task, index) => createTaskHtml(task, weekNumber, 'lab', index)).join('');
+            const prepTasksHtml = weekData.prep.map((task, index) => createTaskHtml(task, weekNumber, 'prep', index)).join('');
 
-                planContent.innerHTML = `
+            planContent.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
-                        <div class="bg-slate-100 p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-4 flex items-center"><span class="text-2xl mr-2">🔬</span> Monday (Lab Session)</h3>
+                        <div class="bg-slate-100 p-6 rounded-lg transition-colors duration-300">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center text-slate-900"><span class="text-2xl mr-2">🔬</span> Monday (Lab Session)</h3>
                             <ul>${labTasksHtml}</ul>
                             <div class="mt-4">
                                 <form class="add-task-form" data-type="lab">
@@ -183,8 +201,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="bg-slate-100 p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-4 flex items-center"><span class="text-2xl mr-2">📚</span> Tue - Fri (Prep & Theory)</h3>
+                        <div class="bg-slate-100 p-6 rounded-lg transition-colors duration-300">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center text-slate-900"><span class="text-2xl mr-2">📚</span> Tue - Fri (Prep & Theory)</h3>
                             <ul>${prepTasksHtml}</ul>
                             <div class="mt-4">
                                 <form class="add-task-form" data-type="prep">
@@ -195,46 +213,56 @@
                         </div>
                     </div>
                 `;
-                addEventListeners();
-            };
+            // No need to call addEventListeners here, using event delegation
+        };
 
-            const updateProgress = () => {
-                recalculateTotalTasks();
-                let completedTasks = 0;
-                let labTasks = 0;
-                let prepTasks = 0;
-                let labTasksDone = 0;
-                let prepTasksDone = 0;
+        const renderWeekButtons = () => {
+            let weekButtonsHtml = '';
+            const weekNumbers = Object.keys(projectData.tasks).map(Number).sort((a, b) => a - b);
+            weekNumbers.forEach(weekNum => {
+                const isActive = weekNum === currentWeek;
+                weekButtonsHtml += `<button data-week="${weekNum}" class="week-btn px-4 py-2 mx-2 mb-2 rounded-md font-semibold ${isActive ? 'text-slate-700 bg-slate-100 border-b-4 border-amber-500' : 'text-slate-500 bg-transparent border-b-4 border-transparent'} transition-colors duration-300">Week ${weekNum}</button>`;
+            });
+            const weekButtonsContainer = document.querySelector('.flex.flex-wrap.justify-center.border-b');
+            weekButtonsContainer.innerHTML = weekButtonsHtml;
+        };
 
-                Object.values(projectData.tasks).forEach(week => {
-                    labTasks += week.lab.length;
-                    prepTasks += week.prep.length;
-                    week.lab.forEach(task => { if (task.done) { completedTasks++; labTasksDone++; } });
-                    week.prep.forEach(task => { if (task.done) { completedTasks++; prepTasksDone++; } });
-                });
+        const updateProgress = () => {
+            recalculateTotalTasks();
+            let completedTasks = 0;
+            let labTasks = 0;
+            let prepTasks = 0;
+            let labTasksDone = 0;
+            let prepTasksDone = 0;
 
-                const percentage = projectData.totalTasks > 0 ? Math.round((completedTasks / projectData.totalTasks) * 100) : 0;
-                progressBar.style.width = `${percentage}%`;
-                progressText.textContent = `${percentage}% Complete (${completedTasks} / ${projectData.totalTasks} tasks)`;
+            Object.values(projectData.tasks).forEach(week => {
+                labTasks += week.lab.length;
+                prepTasks += week.prep.length;
+                week.lab.forEach(task => { if (task.done) { completedTasks++; labTasksDone++; } });
+                week.prep.forEach(task => { if (task.done) { completedTasks++; prepTasksDone++; } });
+            });
 
-                updateChart([labTasks - labTasksDone, prepTasks - prepTasksDone], [labTasksDone, prepTasksDone]);
-            };
+            const percentage = projectData.totalTasks > 0 ? Math.round((completedTasks / projectData.totalTasks) * 100) : 0;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${percentage}% Complete (${completedTasks} / ${projectData.totalTasks} tasks)`;
+            updateChart([labTasks - labTasksDone, prepTasks - prepTasksDone], [labTasksDone, prepTasksDone]);
+        };
 
-            const updateChart = (tasksRemaining, tasksDone) => {
-                if (taskChart) {
-                    taskChart.data.datasets[0].data = tasksRemaining;
-                    taskChart.data.datasets[1].data = tasksDone;
-                    taskChart.update();
-                }
-            };
+        const updateChart = (tasksRemaining, tasksDone) => {
+            if (taskChart) {
+                taskChart.data.datasets[0].data = tasksRemaining;
+                taskChart.data.datasets[1].data = tasksDone;
+                taskChart.update();
+            }
+        };
 
-            const createChart = () => {
-                const ctx = document.getElementById('taskChart').getContext('2d');
-                taskChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Lab Tasks', 'Prep/Theory Tasks'],
-                        datasets: [
+        const createChart = () => {
+            const ctx = document.getElementById('taskChart').getContext('2d');
+            taskChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Lab Tasks', 'Prep/Theory Tasks'],
+                    datasets: [
                         {
                             label: 'Remaining',
                             data: [0, 0],
@@ -249,82 +277,139 @@
                             borderColor: '#FFFFFF',
                             borderWidth: 4,
                         }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '60%',
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    boxWidth: 15,
-                                    padding: 15,
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const value = context.raw;
-                                        return `${context.dataset.label}: ${value} tasks`;
-                                    }
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 15,
+                                padding: 15,
+                                color: 'rgb(100, 116, 139)'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const value = context.raw;
+                                    return `${context.dataset.label}: ${value} tasks`;
                                 }
                             }
                         }
                     }
-                });
-            };
-
-            const handleWeekButtonClick = (e) => {
-                const selectedWeek = e.target.dataset.week;
-                weekButtons.forEach(btn => {
-                    if (btn.dataset.week === selectedWeek) {
-                        btn.classList.add('bg-slate-100', 'text-slate-700', 'border-amber-500');
-                        btn.classList.remove('bg-transparent', 'text-slate-500', 'border-transparent');
-                    } else {
-                        btn.classList.remove('bg-slate-100', 'text-slate-700', 'border-amber-500');
-                        btn.classList.add('bg-transparent', 'text-slate-500', 'border-transparent');
-                    }
-                });
-                renderWeek(selectedWeek);
-            };
-
-            const handleAddTask = (e) => {
-                e.preventDefault();
-                const form = e.target;
-                const input = form.querySelector('input[type="text"]');
-                const taskText = input.value.trim();
-                const type = form.dataset.type;
-
-                if (taskText) {
-                    projectData.tasks[currentWeek][type].push({ text: taskText, done: false });
-                    input.value = '';
-                    renderWeek(currentWeek);
-                    updateProgress();
                 }
-            };
+            });
+        };
 
-            const addEventListeners = () => {
-                document.querySelectorAll('.task-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', (e) => {
-                        const { week, type, index } = e.target.dataset;
-                        projectData.tasks[week][type][index].done = e.target.checked;
-                        updateProgress();
-                    });
-                });
+        const handleWeekButtonClick = (e) => {
+            const selectedWeek = parseInt(e.target.dataset.week);
+            currentWeek = selectedWeek;
+            renderWeekButtons();
+            renderWeek(currentWeek);
+        };
 
-                document.querySelectorAll('.add-task-form').forEach(form => {
-                    form.addEventListener('submit', handleAddTask);
-                });
-            };
-
-            weekButtons.forEach(btn => btn.addEventListener('click', handleWeekButtonClick));
-
-            createChart();
+        const handleAddWeek = () => {
+            const newWeekNumber = Object.keys(projectData.tasks).length + 1;
+            projectData.tasks[newWeekNumber] = { lab: [], prep: [] };
+            currentWeek = newWeekNumber;
+            renderWeekButtons();
             renderWeek(currentWeek);
             updateProgress();
-        });
-    </script>
+        };
+
+        const handleRemoveWeek = () => {
+            const weekNumbers = Object.keys(projectData.tasks).map(Number).sort((a, b) => a - b);
+            if (weekNumbers.length <= 1) {
+                return; // Prevent deleting the last week
+            }
+            const weekToRemove = currentWeek;
+
+            delete projectData.tasks[weekToRemove];
+
+            // Re-index remaining weeks to be sequential
+            const reindexedTasks = {};
+            let newIndex = 1;
+            weekNumbers.forEach(weekNum => {
+                if (weekNum !== weekToRemove) {
+                    reindexedTasks[newIndex++] = projectData.tasks[weekNum];
+                }
+            });
+            projectData.tasks = reindexedTasks;
+
+            currentWeek = newIndex - 1;
+            if (currentWeek === 0) {
+                currentWeek = 1;
+                projectData.tasks[1] = { lab: [], prep: [] };
+            }
+
+            renderWeekButtons();
+            renderWeek(currentWeek);
+            updateProgress();
+        };
+
+        const handleAddTask = (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const input = form.querySelector('input[type="text"]');
+            const taskText = input.value.trim();
+            const type = form.dataset.type;
+
+            if (taskText) {
+                projectData.tasks[currentWeek][type].push({ text: taskText, done: false });
+                input.value = '';
+                renderWeek(currentWeek);
+                updateProgress();
+            }
+        };
+
+        const handleDeleteTask = (e) => {
+            const { week, type, index } = e.target.dataset;
+            projectData.tasks[week][type].splice(index, 1);
+            renderWeek(currentWeek);
+            updateProgress();
+        };
+
+        const addEventListeners = () => {
+            // Event delegation for week buttons
+            document.querySelector('.flex.flex-wrap.justify-center.border-b').addEventListener('click', (e) => {
+                if (e.target.classList.contains('week-btn')) {
+                    handleWeekButtonClick(e);
+                }
+            });
+
+            // Event delegation for task checkboxes and delete buttons
+            planContent.addEventListener('change', (e) => {
+                if (e.target.classList.contains('task-checkbox')) {
+                    const { week, type, index } = e.target.dataset;
+                    projectData.tasks[week][type][index].done = e.target.checked;
+                    updateProgress();
+                }
+            });
+
+            planContent.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete-task-btn')) {
+                    handleDeleteTask(e);
+                }
+            });
+
+            document.querySelectorAll('.add-task-form').forEach(form => {
+                form.addEventListener('submit', handleAddTask);
+            });
+        };
+
+        addWeekBtn.addEventListener('click', handleAddWeek);
+        removeWeekBtn.addEventListener('click', handleRemoveWeek);
+
+        createChart();
+        renderWeekButtons();
+        renderWeek(currentWeek);
+        addEventListeners();
+        updateProgress();
+    });
+</script>
 </body>
 </html>
